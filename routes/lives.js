@@ -25,7 +25,7 @@ router.get('/start', function(req, res, next) {
     res.sendStatus('NG, parameter "scene" is required')
   } else {
     var scene = req.query.scene;
-    var updateSql = "INSERT INTO live (status, scene) VALUES ('started', '"+scene+"')";
+    var updateSql = "INSERT INTO live (started_at, status, scene) VALUES (now(), 'started', '"+scene+"')";
     console.log('live')
     console.log(scene)
     console.log(updateSql)

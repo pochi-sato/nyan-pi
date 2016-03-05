@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `live`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `live` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `started_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `started_at` datetime NOT NULL,
   `scene` varchar(255) NOT NULL DEFAULT 'samba',
   `status` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
