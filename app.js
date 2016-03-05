@@ -12,6 +12,7 @@ var mikes = require('./routes/mikes');
 var cameras = require('./routes/cameras');
 var buttons = require('./routes/buttons');
 var effects = require('./routes/effects');
+var lives = require('./routes/lives');
 var conf = require('config');
 var myGlobal = require('./common/global');
 console.log(conf.twitter.api_key);
@@ -44,6 +45,7 @@ app.use('/mikes', mikes);
 app.use('/cameras', cameras);
 app.use('/buttons', buttons);
 app.use('/effects', effects);
+app.use('/lives', lives);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
