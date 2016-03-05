@@ -11,9 +11,13 @@ router.get('/', function(req, res, next) {
     for(var i = 0, len = rows.length; i < len; i++){
       totalVolume = totalVolume + rows[i].volume;
     }
-    res.jsonp({
-      volume: totalVolume
-    })
+    myGlobal.connection.query('SELECT * FROM live ORDER BY id DESC LIMIT 1', function (err, rows) {
+      var status = rows[0].status;
+      res.jsonp({
+        volume: totalVolume,
+        status: status
+      });
+    });
   });
 });
 
