@@ -11,7 +11,9 @@ router.get('/', function(req, res, next) {
     for(var i = 0, len = rows.length; i < len; i++){
       totalVolume = totalVolume + rows[i].volume;
     }
-    res.sendStatus(totalVolume);
+    res.jsonp({
+      volume: totalVolume
+    })
   });
 });
 
