@@ -7,25 +7,23 @@ var myGlobal = require('./../common/global');
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   myGlobal.connection.query('select * from volume_sensor', function (err, rows) {
-    console.log(rows[0].type)
-    console.log(rows[0].device_id)
-    console.log(rows[0].volume)
-    console.log(JSON.stringify(rows))
     res.send('respond with a resource');
   });
 });
 
 /* GET users listing. */
 router.get('/input', function(req, res, next) {
-  myGlobal.isButtonPushed = true;
-  var updateSql = "update volume_sensor set volume = " + req.query.volume + " where device_id = " + req.query.device_id;
-  console.log(updateSql)
-  console.log('button')
-  console.log(req.query.device_id)
-  console.log(req.query.volume)
-  if(req.query.device_id && req.query.volume){
-    myGlobal.connection.query(updateSql, function (err, rows) {
-      res.send('ok');
+  var volumeUpdateSql = "UPDATE volume_sensor SET volume = " + req.query.volume + " WHERE device_id = " + req.query.device_id;
+  triggerCountUpSql = "UPDATE trigger_sensor SET count = count + 1 WHERE device_id = " + req.query.device_id;
+  if(req.query.device_id){
+    myGlobal.connection.query(triggerCountUpSql, function (err, rows) {
+      if(req.query.volume){
+        myGlobal.connection.query(volumeUpdateSql, function (err, rows) {
+          res.send('ok');
+        });
+      } else {
+        res.send('ng');
+      }
     });
   } else {
     res.send('ng');
