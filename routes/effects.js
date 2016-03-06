@@ -6,6 +6,7 @@ var triggerThreshold = 10;
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
+
   myGlobal.connection.query('SELECT * FROM volume_sensor WHERE device_id in (1,2,4)', function (err, rows) {
     var totalVolume = 0;
     for(var i = 0, len = rows.length; i < len; i++){
@@ -17,9 +18,8 @@ router.get('/', function(req, res, next) {
       myGlobal.connection.query('UPDATE trigger_sensor set count = 0 WHERE count <> 0', function (err, rows) {});
       var triggerCount = 0;
       rows.forEach(function(row){
-        if(triggerCount <= triggerThreshold){
-          triggerCount = triggerCount + row.count;
-        } else {
+        triggerCount = triggerCount + row.count;
+        if(triggerCount > triggerThreshold){
           triggerCount = triggerThreshold;
         }
       });
