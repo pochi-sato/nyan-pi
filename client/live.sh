@@ -16,5 +16,5 @@ while [[ true ]]; do
     open -a /Applications/Google\ Chrome.app https://appear.in/nyan_bunch?scene=$SCENE &
     echo "$ID,$STATUS" > live_status
   fi
-  sleep 1;
+  perl -MTime::HiRes -e 'Time::HiRes::sleep(0.1)';
 done
