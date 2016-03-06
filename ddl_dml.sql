@@ -24,6 +24,7 @@ DROP TABLE IF EXISTS `device`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `device` (
   `id` int(11) NOT NULL,
+  `name` varchar(45) DEFAULT NULL,
   `type` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -35,7 +36,7 @@ CREATE TABLE `device` (
 
 LOCK TABLES `device` WRITE;
 /*!40000 ALTER TABLE `device` DISABLE KEYS */;
-INSERT INTO `device` VALUES (1,'camera'),(2,'camera'),(3,'button'),(4,'mike'),(5,'button');
+INSERT INTO `device` VALUES (1,NULL,'camera'),(2,NULL,'camera'),(3,NULL,'button'),(4,NULL,'mike'),(5,NULL,'button');
 /*!40000 ALTER TABLE `device` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -124,4 +125,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-06 17:55:44
+-- Dump completed on 2016-03-06 18:19:43
