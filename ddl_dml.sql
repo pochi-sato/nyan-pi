@@ -74,7 +74,7 @@ DROP TABLE IF EXISTS `trigger_sensor`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `trigger_sensor` (
   `device_id` int(11) NOT NULL,
-  `status` tinyint(1) NOT NULL,
+  `count` int(11) NOT NULL,
   KEY `fk_trigger_sensor1_idx` (`device_id`),
   CONSTRAINT `fk_trigger_sensor1` FOREIGN KEY (`device_id`) REFERENCES `device` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -86,7 +86,7 @@ CREATE TABLE `trigger_sensor` (
 
 LOCK TABLES `trigger_sensor` WRITE;
 /*!40000 ALTER TABLE `trigger_sensor` DISABLE KEYS */;
-INSERT INTO `trigger_sensor` VALUES (3,1),(5,1);
+INSERT INTO `trigger_sensor` VALUES (3,0),(5,0);
 /*!40000 ALTER TABLE `trigger_sensor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -124,4 +124,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-06 17:34:34
+-- Dump completed on 2016-03-06 17:55:44
