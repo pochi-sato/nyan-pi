@@ -19,6 +19,8 @@ router.get('/', function(req, res, next) {
       rows.forEach(function(row){
         if(triggerCount <= triggerThreshold){
           triggerCount = triggerCount + row.count;
+        } else {
+          triggerCount = triggerThreshold;
         }
       });
       myGlobal.connection.query('SELECT * FROM live ORDER BY id DESC LIMIT 1', function (err, rows) {
