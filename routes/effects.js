@@ -6,7 +6,7 @@ var myGlobal = require('./../common/global');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  myGlobal.connection.query('select * from sensor_volume', function (err, rows) {
+  myGlobal.connection.query('SELECT * FROM volume_sensor', function (err, rows) {
     var totalVolume = 0;
     for(var i = 0, len = rows.length; i < len; i++){
       totalVolume = totalVolume + rows[i].volume;

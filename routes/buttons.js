@@ -6,7 +6,7 @@ var myGlobal = require('./../common/global');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  myGlobal.connection.query('select * from sensor_volume', function (err, rows) {
+  myGlobal.connection.query('select * from volume_sensor', function (err, rows) {
     console.log(rows[0].type)
     console.log(rows[0].device_id)
     console.log(rows[0].volume)
@@ -17,7 +17,8 @@ router.get('/', function(req, res, next) {
 
 /* GET users listing. */
 router.get('/input', function(req, res, next) {
-  var updateSql = "update sensor_volume set volume = " + req.query.volume + " where type = 'button' and device_id = " + req.query.device_id;
+  myGlobal.isButtonPushed = true;
+  var updateSql = "update volume_sensor set volume = " + req.query.volume + " where device_id = " + req.query.device_id;
   console.log(updateSql)
   console.log('button')
   console.log(req.query.device_id)
